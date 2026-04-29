@@ -3,6 +3,9 @@ name: Hello World Training Workflow
 on:
   workflow_dispatch:
 
+env:
+  MY_ENV: "Hello from env!"
+
 jobs:
   greeting:
     runs-on: ubuntu-latest
@@ -18,3 +21,8 @@ jobs:
 
       - name: List files AFTER checkout
         run: ls -l
+
+      - name: Run a multi-line script
+        run: |
+          echo "MY_ENV is: $MY_ENV"
+          echo "GitHub Actor is: $GITHUB_ACTOR"
